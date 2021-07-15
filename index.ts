@@ -1,5 +1,6 @@
-import { Application, Router } from 'https://deno.land/x/oak/mod.ts';
 // import {  } from "https://deno.land/std@0.99.0/http/http_status.ts";
+import { Application, Router } from 'https://deno.land/x/oak/mod.ts';
+import { oakCors} from 'https://deno.land/x/cors/mod.ts';
 
 
 const messages : string [] = []; // new Map<string, any>();
@@ -23,6 +24,7 @@ const app = new Application();
 
 app.use(router.routes());
 app.use(router.allowedMethods());
+app.use(oakCors())
 
 addEventListener('fetch', app.fetchEventHandler())
 
