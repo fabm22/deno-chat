@@ -4,6 +4,7 @@ import { oakCors} from 'https://deno.land/x/cors/mod.ts';
 
 
 const messages : string [] = []; // new Map<string, any>();
+const channel = new BroadcastChannel("chat");
 
 
 const router = new Router();
