@@ -9,7 +9,7 @@ const messages : string [] = []; // new Map<string, any>();
 const router = new Router();
 router
   .get("/", (context) => {
-    context.response.body = "Chat server!";
+    context.response.body = "Deno Chat server!";
   })
   .get("/messages",  (context) => {
     context.response.body = messages; // Array.from(messages.values());
@@ -22,7 +22,7 @@ router
 
 const app = new Application();
 
-app.use(oakCors());
+app.use(oakCors()); // MUST be first
 app.use(router.routes());
 app.use(router.allowedMethods());
 
