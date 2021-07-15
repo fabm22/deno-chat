@@ -1,11 +1,6 @@
 import { Application, Router } from 'https://deno.land/x/oak/mod.ts';
 // import {  } from "https://deno.land/std@0.99.0/http/http_status.ts";
 
-const app = new Application();
-
-app.use((ctx) => {
-    ctx.response.body = 'Hello wooorld with Oak.';
-})
 
 const messages : string [] = []; // new Map<string, any>();
 
@@ -13,7 +8,7 @@ const messages : string [] = []; // new Map<string, any>();
 const router = new Router();
 router
   .get("/", (context) => {
-    context.response.body = "Hello world!";
+    context.response.body = "Chat server!";
   })
   .get("/messages",  (context) => {
     context.response.body = messages; // Array.from(messages.values());
@@ -24,14 +19,12 @@ router
   })
 ;
 
+const app = new Application();
 
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-
-
-
-// addEventListener('fetch', app.fetchEventHandler())
+addEventListener('fetch', app.fetchEventHandler())
 
 // // window.
 // addEventListener('fetch', (event) => {
@@ -43,4 +36,12 @@ app.use(router.allowedMethods());
 
 //     // @ts-ignore not sure why
 //     event.respondWith(response)
+// })
+
+
+
+// const app = new Application();
+
+// app.use((ctx) => {
+//     ctx.response.body = 'Hello wooorld with Oak.';
 // })
